@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌱 Plant Disease Detection System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
+   <link rel="stylesheet" href="plantdisease.css">
+</head>
+<body>     
+<header>
+  <svg class="header-plant" viewBox="0 0 70 100">
+    <ellipse cx="35" cy="85" rx="20" ry="8" fill="#cfd8dc"/>
+    <ellipse cx="35" cy="80" rx="20" ry="6" fill="#8d6e63"/>
+    <rect x="31" y="48" width="8" height="32" rx="4" fill="#8bc34a"/>
+    <ellipse cx="20" cy="60" rx="12" ry="25" fill="#81c784" transform="rotate(-18 20 60)"/>
+    <ellipse cx="50" cy="68" rx="14" ry="24" fill="#43a047" transform="rotate(16 50 68)"/>
+    <ellipse cx="35" cy="42" rx="15" ry="30" fill="#388e3c"/>
+    <circle cx="35" cy="30" r="9" fill="#ffd740"/>
+    <circle cx="35" cy="30" r="4" fill="#fffde7"/>
+  </svg>
+  <h1>🌱 Plant Disease Detection System</h1>
+  <p>Detect plant diseases with ease and confidence</p>
+  <svg class="header-leaf-float" viewBox="0 0 90 90">
+    <path d="M56 17C65 27 72 39 72 51c0 15-10 26-20 33-6 3-12 1-21-5C18 70 10 59 10 48c0-8 8-17 18-23 8-7 28-3 28-8z" fill="#8ee095"/>
+    <path d="M59 19Q53 42 37 68" stroke="#389d5f" stroke-width="3" fill="none"/>
+    <ellipse cx="62" cy="17" rx="6" ry="3" fill="#c2efa9"/>
+  </svg>
+</header>
+<nav>
+  <a class="active" onclick="showSection('homeSection')">Home</a>
+  <a onclick="showSection('detectSection')">Detect Disease</a>
+  <a onclick="showSection('knowledgeSection')">Knowledge Base</a>
+  <a onclick="showSection('aboutSection')">About</a>
+  <a onclick="showSection('contactSection')">Contact</a>
+</nav>
+<div class="container">
+
+  <!-- HOME: MASS LEAVES & WIND -->
+  <div id="homeSection" class="section active" style="position:relative;min-height:420px;">
+    <div class="leaves-bg" id="leaves-bg"></div>
+    <svg class="breeze-curve breeze-lines" style="left:8vw; top:170px;">
+      <path d="M10 70 Q80 10 200 60 Q260 92 290 20" stroke="#8ae4c6" stroke-width="7" fill="none" stroke-linecap="round"/>
+    </svg>
+    <svg class="breeze-curve breeze-lines breeze-curve2">
+      <path d="M15 90 Q99 80 170 32 Q250 0 270 120" stroke="#b9eabc" stroke-width="6" fill="none" stroke-linecap="round"/>
+    </svg>
+    <svg class="breeze-curve breeze-lines breeze-curve2" style="left:70vw; top:210px;">
+      <path d="M20 50 Q110 90 200 70" stroke="#e0fbe8" stroke-width="6" fill="none" stroke-linecap="round"/>
+    </svg>
+    <svg class="welcome-plant" viewBox="0 0 70 95">
+      <ellipse cx="35" cy="85" rx="20" ry="8" fill="#cfd8dc"/>
+      <ellipse cx="35" cy="80" rx="20" ry="6" fill="#8d6e63"/>
+      <rect x="31" y="48" width="8" height="32" rx="4" fill="#8bc34a"/>
+      <ellipse cx="20" cy="60" rx="12" ry="25" fill="#81c784" transform="rotate(-18 20 60)"/>
+      <ellipse cx="50" cy="68" rx="14" ry="24" fill="#43a047" transform="rotate(16 50 68)"/>
+      <ellipse cx="35" cy="42" rx="15" ry="30" fill="#388e3c"/>
+      <circle cx="35" cy="30" r="9" fill="#ffd740"/>
+      <circle cx="35" cy="30" r="4" fill="#fffde7"/>
+    </svg>
+    <h2>Welcome!</h2>
+    <div class="welcome-text">
+      This mini project helps users detect plant diseases and provides useful information to protect your plants.<br>
+      Use the navigation above to explore features or upload a plant leaf image for analysis.
+    </div>
+  </div>
+  <!-- All the other working sections remain the same as before -->
+  <div id="detectSection" class="section">
+    <h2>Detect Disease</h2>
+    <input type="text" id="searchInput" placeholder="Search by plant or disease..." onkeyup="searchDiseases()" style="width:100%;max-width:420px;display:block;margin:0 auto 14px;"/>
+    <ul id="searchResults"></ul>
+    <div class="upload-box">
+      <input type="file" id="imageInput" accept="image/*" style="margin-bottom:8px;"><br>
+      <button onclick="detectDisease()">Detect Disease</button>
+    </div>
+    <div class="result" id="resultBox" style="display:none;">
+      <h3>Result:</h3>
+      <p><b>Plant:</b> Tomato</p>
+      <p><b>Disease:</b> Early Blight</p>
+      <p><b>Symptoms:</b> Dark spots on leaves with yellowing</p>
+      <p><b>Treatment:</b> Apply fungicide spray, crop rotation</p>
+      <p><b>Confidence:</b> 92%</p>
+    </div>
+  </div>
+    <div id="knowledgeSection" class="section">
+    <h2>Knowledge Base</h2>
+    <div class="knowledge-box">
+      <h3>How It Works</h3>
+      <ul>
+        <li>User uploads an image of a plant leaf or searches for a disease.</li>
+        <li>The system analyzes the image or query to match possible diseases using its database.</li>
+        <li>It displays the likely disease, symptoms, and suggested treatments.</li>
+        <li>Guidance is provided on disease management and further resources.</li>
+      </ul>
+      <h3>What are Plant Diseases?</h3>
+      <ul>
+        <li>Plant diseases are disorders caused by pathogens (fungi, bacteria, viruses) or environmental stress.</li>
+        <li>They affect leaves, stems, roots, flowers, or fruit, causing visible symptoms.</li>
+        <li>Disease outbreaks can be triggered by high humidity, poor soil, overcrowding, or pest infestation.</li>
+      </ul>
+      <h3>How Do Plant Diseases Affect Plants?</h3>
+      <ul>
+        <li>Diseases reduce photosynthesis, stunting plant growth and yield.</li>
+        <li>Can cause leaf yellowing, wilting, spots, or rot, making crops unmarketable.</li>
+        <li>Severe cases may kill plants or spread across farms causing major economic loss.</li>
+        <li>Early detection and proper management are crucial for healthy crops.</li>
+      </ul>
+     
+    </div>
+  </div>
+  <div id="aboutSection" class="section">
+    <h2>About</h2>
+    <div class="about-box">
+      This website is a college mini project created to help farmers and researchers detect plant diseases using simple web technologies.<br>
+      Developed by enthusiastic students passionate about agriculture and technology integration.
+    </div>
+  </div>
+  <div id="contactSection" class="section">
+    <h2>Contact</h2>
+    <div class="contact-box">
+      For feedback or more information, reach us at: <b>project.team@ReLeaf.com</b>
+    </div>
+  </div>
+</div>
+<footer>
+  &copy; 2025 Plant Disease Detection Mini Project
+</footer>
+<script src="plantdisease.JS"></script>
+</body>
+</html>
